@@ -52,12 +52,20 @@ def get_points(im):
     return data['points']
 
 if __name__ == "__main__":
-
+    data = {}
+    data["pointsall"] = ['1:']
 #Read the destination image
-    img_dst = cv2.imread("./geo.jpg")
+    for i in range(1,13): # last number will not count
+        img = './Face_Portrait/out/fusion_' + str(i) + '.jpg'
+        img_dst = cv2.imread(img)
 
-    print("Click on the screen and press any key for end process")
-    points  = get_points(img_dst)
+        # print("Click on the screen and press any key for end process")
+        points  = get_points(img_dst)
 
-    print("\npoints list:")
-    print(points)
+        print("\npoints list of fusion" + str(i) +':')
+        # pointsall = pointsall.extend(points)
+        data["pointsall"].append(points)
+        data["pointsall"].append(str(i+1))
+        print(points)
+
+    print(data["pointsall"])
