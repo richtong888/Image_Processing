@@ -86,6 +86,8 @@ class ShapeAnalysis:
         cv.putText(image, "circles: " + str(c4), (10, 80), cv.FONT_HERSHEY_PLAIN, 1.2, (255, 0, 0), 1)
         return image
 
+
+
 def find_nose(img):
     
     # data cropping
@@ -178,9 +180,10 @@ def draw_line(img):
 if __name__ == "__main__":
     # img = cv.imread("geo.jpg")
     # img = cv.imread("img1.jpg")
-    img = cv.imread("por2.jpg")    
-    # find_portrait(img)
-    draw_line(img)
+    # img = cv.imread("por2.jpg")   
+    img = cv.imread("./Face_Portrait/val/val_2.jpg") 
+    find_portrait(img)
+    # draw_line(img)
     # ld = ShapeAnalysis()
     # ld.analysis(img)
     key = cv.waitKey(0) & 0xFF
