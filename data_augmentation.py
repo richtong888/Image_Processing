@@ -6,9 +6,10 @@ from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_a
 for i in range(1,11):
 
     # s = '%05d' % i
-    imgForTest = 'face_side/img' +str(i)+ '.jpg'
+    imgForTest = './face_side/img' +str(i)+ '.jpg'
 
     img = cv2.imread(imgForTest)  # this is a PIL image
+    print(imgForTest)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         
     plt.imshow(img)
