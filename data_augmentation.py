@@ -3,10 +3,10 @@ from matplotlib import pyplot as plt
 from pylab import rcParams
 rcParams['figure.figsize'] = 15, 15
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
-for i in range(0,99):
+for i in range(1,11):
 
-    s = '%05d' % i
-    imgForTest = 'face_original_img_1/img' +str(s)+ '.jpg'
+    # s = '%05d' % i
+    imgForTest = 'face_side/img' +str(i)+ '.jpg'
 
     img = cv2.imread(imgForTest)  # this is a PIL image
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -20,7 +20,7 @@ for i in range(0,99):
 
     datagen = ImageDataGenerator(
         zca_whitening=True,
-        rotation_range=30,
+        rotation_range=10,
         width_shift_range=0.1,
         height_shift_range=0.1,
         shear_range=0.1,
@@ -32,7 +32,7 @@ for i in range(0,99):
 
     cnt = 0
     for batch in datagen.flow(img, batch_size=1,
-                            save_to_dir='face_aug_img_1', save_prefix='face', save_format='png'):
+                            save_to_dir='./face_side/output', save_prefix='face', save_format='jpg'):
         # plt.subplot(5,4,1 + i)
         # plt.axis("off")
         
@@ -42,6 +42,6 @@ for i in range(0,99):
         # plt.imshow(augImage)
         
         cnt += 1
-        if cnt > 4:
+        if cnt > 5:
             break  # otherwise the generator would loop indefinitely
     # These output 4 picture
